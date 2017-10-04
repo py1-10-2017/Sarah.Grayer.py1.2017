@@ -1,0 +1,34 @@
+pip install Django - Installs the program
+
+pip list - Lists all Python packages installed with pip, and their versions. Includes set-up tools and pip itself.
+click (6.7)
+Django (1.11.5)
+Flask (0.12.2)
+itsdangerous (0.24)
+Jinja2 (2.9.6)
+MarkupSafe (1.0)
+pip (9.0.1)
+pytz (2017.2)
+setuptools (28.8.0)
+Werkzeug (0.12.2)
+
+pip install Django (after install) - Shows that it's installed, and where I can find it. Also shows pytz..
+
+pip freeze - Lists installed packages. Output format is what pip needs in order to install a certain version. Does not show packages which pip relies on to operate.
+click==6.7
+Django==1.11.5
+Flask==0.12.2
+itsdangerous==0.24
+Jinja2==2.9.6
+MarkupSafe==1.0
+pytz==2017.2
+Werkzeug==0.12.2
+
+dir (after above, while in desktop) - Shows what folders and shortcuts I have in my desktop.
+
+pip uninstall Django - Uninstalls, asks y/n to confirm, shows successful.
+
+pip show Django - Shows nothing. Would show info about the package if currently installed, such as version, location, summary of what it does, requirements. 
+
+pip search Flask - searches for packages in Python whose name/summary contains Flask, generates long list of packages of which that is true.
+
