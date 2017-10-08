@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>(Double Trouble)</title>
+    <script type="text/javascript">
+
+    function doubletrouble(arr){
+      for (var i = 0; i < arr.length; i = i + 2){
+          arr.splice(i, 0, arr[i])
+          //console.log (arr)
+      }
+      console.log(arr)
+    }
+
+    doubletrouble([4, "Ulysses", 42, false])
+
+    </script>
+  </head>
+<body>
+</body>
+</html>
