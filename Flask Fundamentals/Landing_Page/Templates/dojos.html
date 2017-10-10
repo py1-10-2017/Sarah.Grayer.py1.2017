@@ -1,9 +1,14 @@
 <html>
   <head>
-  <title>Landing Page</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename= "stylesheet.css")}}">
+    <title>Landing Page</title>
     <body>
-     <h3></h3>
-     <p></p>
+     <h1>Dojo Page</h1>
+     <form action="/process" method="post">
+       <input type = "text" name="Name" </input>
+       <input type="text" name="Location"</input>
+       <input type = "submit" value="Click here"</input>
+     </form>
      </body>
   </head>
 </html>
