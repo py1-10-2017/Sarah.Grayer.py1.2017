@@ -1,0 +1,16 @@
+h1{
+  color: green;
+  text-decoration: underline;
+}
+h5{
+  color: purple;
+  padding= 20px;
+}
+span{
+  color: orange;
+}
+
+.form-group{
+  color: orange;
+  display: block;
+}
