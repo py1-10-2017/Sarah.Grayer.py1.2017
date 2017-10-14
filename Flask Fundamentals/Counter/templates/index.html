@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Counter</title>
+  </head>
+  <body>
+    <h1>Counter: {{session['counter']}} time(s)</h1>
+
+    <form action = '/add2' method = 'post'>
+      <button>Add 2</button>
+    </form>
+
+    <form action = '/add10' method = 'post'>
+      <button>Add 10</button>
+    </form>
+
+    <form action = '/reset' method = 'post'>
+      <button>Reset</button>
+    </form>
+  </body>
+</html>
