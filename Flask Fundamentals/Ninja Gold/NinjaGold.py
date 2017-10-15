@@ -18,7 +18,7 @@ def process():
     if building == 'farm':
         newgold = random.randint(10,21)
         #session['activities'].append({'activity':"You entered a {} and earned {} gold".format(building, newgold), 'class':'win'})
-        session['activity'] = "\n" " You entered a {} and earned {} gold".format(building, newgold)
+        session['activity'] = " You entered a {} and earned {} gold".format(building, newgold)
 
     elif building == 'cave':
         newgold = random.randint(5,11)

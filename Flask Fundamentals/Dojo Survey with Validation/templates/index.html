@@ -1,41 +1,29 @@
 <html>
   <head>
   <link rel="stylesheet" type="text/css" href="{{url_for("static", filename= "dojosurveystylesheet.css")}}">
+  <meta charset="UTF-8">
+  <title>Results Page</title>
   <title>Dojo Survey</title>
   </head>
   <body>
     <div class="container">
     <h1>Dojo Survey</h1>
-     <form action='/result' method='post'>
-
-       <div class= "form-group">
-         {% with messages = get_flashed_messages() %}
-           {% if messages %}
-             {% for message in messages %}
-               <p>{{message}}</p>
-             {% endfor %}
-           {% endif %}
-         {% endwith %}
-         <label for="name">Your Name:</label>
-         {% with messages = get_flashed_messages() %}
-           {% if messages %}
-             {% for message in messages %}
-               <p>{{message}}</p>
-             {% endfor %}
-           {% endif %}
-         {% endwith %}
-         <input type="text" id="name" class="form-control"name="name">
-         {% with messages = get_flashed_messages() %}
-           {% if messages %}
-             {% for message in messages %}
-               <p>{{message}}</p>
-             {% endfor %}
-           {% endif %}
-         {% endwith %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <h2>{{message}}</h2>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+      <div class= "form-group">
+       <label for="name">Your Name:</label>
+        <form action='/process' method='POST'>
+         <input type="text" id="name" class="form-control" name="name">
        </div>
 
        <div class= "form-group">
          <label for="location">Dojo Location:</label>
+         <form action='/process' method='POST'>
          <select type="text" id="location" class="form-control"name="location">
            <option value = "Seattle">Seattle</option>
            <option value = "San Jose">San Jose</option>
@@ -47,6 +35,7 @@
 
        <div class= "form-group">
          <label for="language">Favorite Language:</label>
+         <form action='/process' method='POST'>
          <select type="text" id="language" class="form-control"name="language">
            <option value = "Python">Python</option>
            <option value = "Ruby">Ruby</option>
@@ -55,14 +44,8 @@
        </div>
 
        <div class= "form-group">
-         <label for="comment">Comment (optional):</label>
-         {% with messages = get_flashed_messages() %}
-           {% if messages %}
-             {% for message in messages %}
-               <p>{{message}}</p>
-             {% endfor %}
-           {% endif %}
-         {% endwith %}
+         <label for="comment">Comment:</label>
+         <form action='/process' method='POST'>
          <textarea type="text" id="comment" class="form-control"name="comment"></textarea>
        </div>
         <div class="form-group">

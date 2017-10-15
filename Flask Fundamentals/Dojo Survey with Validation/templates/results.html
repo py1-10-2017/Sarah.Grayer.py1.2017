@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Results Page</title>
+  <link rel="stylesheet" href="{{url_for("static", filename= "dojosurveystylesheet.css")}}">
+</head>
+<body>
+  <div class"container">
+    <div class="results">
+      <h1>Submitted Info</h1>
+      <h5>Name: <span class="pull-right">{{name}}</span></h5>
+      <h5>Location: <span class="pull-right">{{location}}</span></h5>
+      <h5>Language: <span class="pull-right">{{language}}</span></h5>
+      <h5>Comment: <span class="pull-right">{{comment}}</span></h5>
+      <a href="/"><button class="btn btn-info">Back</button></a>
+    </div>
+  </div>
+</body>
+</html>
