@@ -1,0 +1,16 @@
+body{
+  text-align: center;
+}
+h1{
+  color: purple;
+  margin-top: 20px;
+}
+p{
+  color: red;
+}
+input{
+  margin: 15px;
+}
+h2{
+  color: red;
+}
