@@ -1,0 +1,36 @@
+<html lang = "en">
+  <head>
+  <link rel="stylesheet" type="text/css" href="{{url_for("static", filename= "stylesheet.css")}}">
+  <meta charset="UTF-8">
+  <title>Disappearing Ninja</title>
+  </head>
+
+  <body>
+    <h1>Ninja</h1>
+    {% if session['turtle'] == 'leonardo' %}
+    <img src ="/static/leonardo.jpg">
+    <h1>Leonardo</h2>
+
+    {% elif session['turtle'] == 'michelangelo' %}
+    <img src ="/static/michelangelo.jpg">
+    <h1>Michelangelo</h2>
+
+    {% elif session['turtle'] == 'raphael' %}
+    <img src ="/static/raphael.jpg">
+    <h1>Raphael</h2>
+
+    {% elif session['turtle'] == 'donatello' %}
+    <img src ="/static/donatello.jpg">
+    <h1>Donatello</h2>
+
+    {% elif session['turtle'] == 'none' %}
+    <img src ="/static/notapril.jpg">
+    <h1>That's not a ninja</h2>
+
+    {% endif %}
+
+    <a href='/reset'><button>Again</button></a>
+
+
+ </body>
+</html>
