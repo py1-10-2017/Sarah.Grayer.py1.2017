@@ -23,15 +23,15 @@ def process():
         errors = True
         return redirect('/')
 
-    if len(request.form['name']) < 1:
+    if len(request.form['lastname']) < 1:
         flash('Last name cannot be empty', 'error')
         errors = True
         return redirect('/')
-    elif not request.form['name'].isalpha():
+    elif not request.form['lastname'].isalpha():
         flash('Last name cannot contain numbers or special characters', 'error')
         errors = True
         return redirect('/')
-    '''
+
     if len(request.form['email']) < 1:
         flash('Email cannot be empty', 'error')
         errors = True
@@ -52,7 +52,7 @@ def process():
     elif request.form['pass'] != request.form['passconfirm']:
         flash('Passwords must match', 'error')
         errors = True
-        return redirect('/')'''
+        return redirect('/')
 
     if errors == False:
         flash('Thank you for submitting your information!')
