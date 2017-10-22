@@ -1,0 +1,6 @@
+-- Examples of queries.
+USE twitter; -- set the database you want to use
+
+SELECT * FROM twitter; -- or any table in the twitter database
+
+INSERT INTO tweets (tweet, created_at, updated_at) VALUES ('this is a tweet', NOW(), NOW());
