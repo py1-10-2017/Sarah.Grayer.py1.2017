@@ -25,14 +25,16 @@ ON clients.client_id = sites.client_id
 WHERE clients.client_id = 10;
 
 -- get total # of sites created per month per year for the client with an id of 1? What about for client=20?
-SELECT sites.client_id, COUNT(sites.site_id) AS number_sites, DATE_FORMAT(sites.created_datetime, '%M') AS month_created, DATE_FORMAT(sites.created_datetime, '%Y') AS year_created
+SELECT sites.client_id, COUNT(sites.site_id) AS number_sites, DATE_FORMAT(sites.created_datetime, '%M') AS month_created, 
+DATE_FORMAT(sites.created_datetime, '%Y') AS year_created
 FROM sites
 WHERE sites.client_id = 1
 GROUP BY month_created, year_created
 ORDER BY year_created, month_created;
 
 
-SELECT sites.client_id, COUNT(sites.site_id) AS number_sites, DATE_FORMAT(sites.created_datetime, '%M') AS month_created, DATE_FORMAT(sites.created_datetime, '%Y') AS year_created
+SELECT sites.client_id, COUNT(sites.site_id) AS number_sites, DATE_FORMAT(sites.created_datetime, '%M') AS month_created, 
+DATE_FORMAT(sites.created_datetime, '%Y') AS year_created
 FROM sites
 WHERE sites.client_id = 20
 GROUP BY month_created, year_created;
@@ -71,7 +73,8 @@ GROUP BY leads.registered_datetime;
 -- get a list of client names and the total # of leads we've generated for each of our clients' sites 
 -- between January 1, 2011 to December 31, 2011? Order this query by client id.  Come up with a second 
 -- query that shows all the clients, the site name(s), and the total number of leads generated from each site for all time.
-SELECT CONCAT(clients.first_name,' ', clients.last_name) AS client_name, sites.domain_name, COUNT(leads.leads_id) AS num_leads, leads.registered_datetime 
+SELECT CONCAT(clients.first_name,' ', clients.last_name) AS client_name, sites.domain_name, COUNT(leads.leads_id) AS num_leads, 
+leads.registered_datetime 
 FROM clients
 JOIN sites
 ON clients.client_id = sites.client_id
@@ -91,18 +94,17 @@ GROUP BY sites.domain_name
 ORDER BY clients.client_id, num_leads DESC;
 
 -- retrieves total revenue collected from each client for each month of the year. Order it by client id
-SELECT CONCAT(clients.first_name,' ', clients.last_name) AS client_name, SUM(billing.amount) AS total_revenue, DATE_FORMAT(billing.charged_datetime, '%M') AS 'month_charged', DATE_FORMAT(billing.charged_datetime, '%Y') AS 'year_charged'
+SELECT CONCAT(clients.first_name,' ', clients.last_name) AS client_name, SUM(billing.amount) AS total_revenue, 
+DATE_FORMAT(billing.charged_datetime, '%M') AS 'month_charged', DATE_FORMAT(billing.charged_datetime, '%Y') AS 'year_charged'
 FROM clients
 JOIN billing
 ON clients.client_id = billing.client_id
 GROUP BY client_name, MONTH(billing.charged_datetime), YEAR(billing.charged_datetime)  
 ORDER BY clients.client_id, YEAR(billing.charged_datetime), MONTH(billing.charged_datetime);
 
-
-
 -- retrieves all the sites that each client owns. Group the results so that each row shows a new client. It will 
 -- become clearer when you add a new field called 'sites' that has all the sites that the client owns. 
--- SELECT CONCAT(clients.first_name,' ', clients.last_name) AS client_name, GROUP_CONCAT(' ',sites.domain_name) AS sites
+SELECT CONCAT(clients.first_name,' ', clients.last_name) AS client_name, GROUP_CONCAT(' ',sites.domain_name) AS sites
 FROM clients
 JOIN sites
 ON clients.client_id = sites.client_id
