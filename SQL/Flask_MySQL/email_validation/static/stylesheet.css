@@ -1,0 +1,19 @@
+body{
+  text-align: center;
+}
+h1{
+  color: purple;
+}
+.email_input{
+  display: block;
+}
+button{
+  margin: 15px;
+  justify-content: center;
+}
+h2{
+  color: green;
+}
+table{
+  align-items: center;
+}

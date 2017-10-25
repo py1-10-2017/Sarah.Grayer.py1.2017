@@ -1,0 +1,15 @@
+No db in def arguments: TypeError: MySQLConnector() takes exactly 1 argument (2 given)
+
+SyntaxError: invalid syntax
+
+No password: sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: NO)")
+
+Wrong port #: sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1' (10061)")
+
+Named database wrong, doesn't match arguement:  'database': dd, # we got db as an argument
+NameError: global name 'dd' is not defined
+
+Changed app.config[] to FALSE: NameError: global name 'FALSE' is not defined
+
+No mydb schema created yet: super(Connection, self).__init__(*args, **kwargs2)
+sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (1049, "Unknown database 'mydb'")
