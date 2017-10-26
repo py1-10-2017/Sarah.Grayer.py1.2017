@@ -22,7 +22,7 @@ def create():
 
     #Write query as a string. Notice how we have multiple valus we want to
     #insert into our query.
-    query = "INSERT INTO friends (first_name, last_name, occupation, created_at, updated_at) VALUES (:first_name, :last_name, :occupation, :NOW(), :NOW())"
+    query = "INSERT INTO friends (first_name, last_name, occupation) VALUES (:first_name, :last_name, :occupation)"
     #We'll then create a dictionary of data from the POST data received.
     data = {
             'first_name': request.form['first_name'],

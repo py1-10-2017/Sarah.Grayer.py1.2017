@@ -21,10 +21,10 @@
         <tr>
           <td>{{ email['email'] }}</td>
           <td>{{ email['created_at'] }}</td>
-          <!--<td class="remove"><a href="/remove_email/{{ email['id'] }}">
-          </a>
+          <td><form action="/remove_email/<email_id>">
+            <button type="submit">Remove Email</button>
           </td>
-        </tr>-->
+        </tr>
         {% endfor %}
       </tbody>
     </table>

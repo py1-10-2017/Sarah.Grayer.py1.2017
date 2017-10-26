@@ -19,8 +19,8 @@ def add():
 	print email
 
 	if not EMAIL_REGEX.match(email):
-		flash('Invalid email.')
-		print "Email fail"
+		flash('Invalid email.') #message in html
+		print "Email fail" #prints in terminal
 		return redirect('/')
 	else:
 		query = "INSERT INTO email(email, created_at) VALUES(:email, NOW())"
@@ -45,7 +45,7 @@ def home():
 @app.route('/remove_email/<email_id>')
 def delete(email_id):
     query = "DELETE FROM email WHERE id = :id"
-    data = {'id': email_id}
+    data = {'id': 'email_id'}
     mysql.query_db(query, data)
     return redirect('/success')
 
