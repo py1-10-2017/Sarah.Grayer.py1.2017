@@ -11,6 +11,8 @@ mysql = MySQLConnector(app, 'full_friends_db')
 
 @app.route('/')
 def index(): #Display all of the friends on the index.html page
+    query = "SELECT * FROM friends"
+    friends = mysql.query_db(query)
     return render_template('index.html')
 
 
