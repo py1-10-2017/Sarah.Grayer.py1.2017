@@ -20,10 +20,8 @@
         {% for email in all_emails %}
         <tr>
           <td>{{ email['email'] }}</td>
-          <td>{{ email['created_at'] }}</td>
-          <td><form action="/remove_email/<email_id>">
-            <button type="submit">Remove Email</button>
-          </td>
+          <td>{{ email['created_at'].strftime("%m/%d/%y %I:%M")}} </td>
+          <td><a href="/remove_email/{{email['id']}}">Remove</a></td>
         </tr>
         {% endfor %}
       </tbody>

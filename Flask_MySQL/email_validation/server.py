@@ -45,7 +45,7 @@ def home():
 @app.route('/remove_email/<email_id>')
 def delete(email_id):
     query = "DELETE FROM email WHERE id = :id"
-    data = {'id': 'email_id'}
+    data = {'id': email_id}
     mysql.query_db(query, data)
     return redirect('/success')
 
