@@ -6,22 +6,18 @@
   </head>
   <body>
     <h1>Edit Friend:</h1>
-    {% for friends in all_friends %}
-
-    <form action="/friend/{{friends['id']}}>" method="POST">
+      <form action="/update/{{friend['id']}}" method="POST">
 
       <label for="first_name">First Name: </label>
-      <input type= "text" name="first_name">
+      <input type= "text" name="first_name" placeholder="{{friend['first_name']}}">
 
       <label for="last_name">Last Name: </label>
-      <input type= "text" name="last_name">
+      <input type= "text" name="last_name" placeholder="{{friend['last_name']}}">
 
       <label for ="email">Email: </label>
-      <input type= "email" name="email">
+      <input type= "email" name="email" placeholder="{{friend['email']}}">
 
       <button type="submit">Update</button>
-
     </form>
-    {% endfor %}
   </body>
 </html>

@@ -29,26 +29,36 @@ def create(): #Handle the add friend form submit and create the friend in the DB
 
 @app.route('/edit_friend/<friend_id>', methods=['POST', 'GET'])
 def edit(friend_id): #Display the edit friend page for the particular friend
+    query = "SELECT id, first_name, last_name, email FROM friends WHERE id = :id"
+    data={
+    'id':int(friend_id)#selects this particular friend to edit
+    }
+    friend = mysql.query_db(query, data)[0]
+    mysql.query_db(query, data)
     print "edit"
-    return render_template('edit.html')
+    return render_template('edit.html', friend=friend)
 
-@app.route('/friend/<friend_id>', methods=['POST', 'GET'])
+@app.route('/update/<friend_id>', methods=['POST', 'GET'])
 def update(friend_id):#Handle the edit friend form submit and update the friend in the DB
-    query = "UPDATE friends SET first_name= :first_name, last_name= :last_name, email= :email WHERE id= :id"
+    query = "UPDATE friends SET first_name = :first_name, last_name = :last_name, email = :email WHERE id = :id"
     data = {
-        'first_name': request.form['first_name'],
-        'last_name':  request.form['last_name'],
-        'email': request.form['email'],
-        'id': id
-        }
+        'first_name': request.form['first_name'].encode("utf-8"),
+        'last_name':  request.form['last_name'].encode("utf-8"),
+        'email': request.form['email'].encode("utf-8"),
+        'id': int(friend_id)
+        #.encode("utf-8" solves for unicode issue
+       }
     mysql.query_db(query, data)
     print "update"
+    print request.form['first_name']
+    print type(request.form['first_name'])
+    #checks that it's selecting correct friend
     return redirect('/')
 
 @app.route('/delete_friend/<friend_id>', methods=['POST', 'GET'])
 def destroy(friend_id): #Delete the friend from the DB
     query = "DELETE FROM friends WHERE id = :id"
-    data = {'id': friend_id}
+    data = {'id':int(friend_id)}
     mysql.query_db(query, data)
     print "delete"
     return redirect('/')
