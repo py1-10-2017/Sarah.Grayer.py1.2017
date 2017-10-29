@@ -6,6 +6,7 @@
     <body>
     <h1>Full Friends</h1>
     <div class="friends_table">
+      <table>
       <thead>
         <tr>
           <th>First Name</th>
@@ -15,26 +16,34 @@
         </tr>
       </thead>
       <tbody>
-      {% for friends in full_friends_db %}
+      {% for friends in all_friends %}
         <tr>
         <td>{{ friends['first_name']}}</td>
         <td>{{ friends['last_name']}}</td>
         <td>{{ friends['email']}}</td>
-        <td></td>
+        <td>
+          <form action ="/edit_friend/{{friends['id']}}"><input type="submit" value="Edit"></form>
+          <form action = "/delete_friend/{{friends['id']}}"><input type="submit" value="Delete"></form>
+        </td>
         </tr>
       {% endfor %}
     </tbody>
+  </table>
     </div>
-    <div class="Add_friend">
-      <form action="post">
-        <label>First Name: </label>
-        <input type= "text" name=first_name>
-        <label>Last Name: </label>
-        <input type= "text" name=last_name>
-        <label>Email: </label>
-        <input type= "email" name=email>
-        <button type="submit">Add Friend</button>
+
+      <form action="/addfriends" method="post">
+        <div class = "input">
+        <label for "first_name">First Name: </label>
+        <input type= "text" name=first_name id="first_name">
+
+        <label for "last_name">Last Name: </label>
+        <input type= "text" name=last_name id="last_name">
+
+        <label for "email">Email: </label>
+        <input type= "email" name=email id="email">
+
+        <button class="btn btn-success">Add Friend</button>
+      </div>
       </form>
-    </div>
   </body>
 </html>

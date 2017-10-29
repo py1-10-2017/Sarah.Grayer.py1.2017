@@ -1,32 +1,27 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Full Friends</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css')}}">
-    <body>
-      <form>
-        <label>First Name: ></label>
-        <input type= "text" name=first_name>
-        <label>Last Name: ></label>
-        <input type= "text" name=last_name>
-        <label>Email: ></label>
-        <input type= "email" name=email>
-        <input type= "submit">Update<name="Update">
+  <head>
+      <title>Full Friends</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css')}}">
+  </head>
+  <body>
+    <h1>Edit Friend:</h1>
+    {% for friends in all_friends %}
 
-      <h1>Add Email:</h1>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-          {{message}}
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-     <form action="/add" method="post">
-      <div class = "email_input">
-      <label for="email">Email:</label>
-      <input type="text" name="email" id="email">
-      </div>
-      <button type="submit">Add</button>
+    <form action="/friend/{{friends['id']}}>" method="POST">
+
+      <label for="first_name">First Name: </label>
+      <input type= "text" name="first_name">
+
+      <label for="last_name">Last Name: </label>
+      <input type= "text" name="last_name">
+
+      <label for ="email">Email: </label>
+      <input type= "email" name="email">
+
+      <button type="submit">Update</button>
+
     </form>
-    </body>
+    {% endfor %}
+  </body>
 </html>
