@@ -95,8 +95,9 @@ def login():#below is the data to get
     else:
         user = user[0]
         if user["password"] == password:#grab 1st user, and first user's pw
-            flash("Logged in!")
-            session['user'] = user
+            #flash("Logged in!")
+            get_id = mysql.query_db("SELECT id from users WHERE email=:email", data)
+            session['id'] = get_id[0]['id']
             return redirect ('/wall')
         else:
             flash ("Invalid password")
@@ -105,20 +106,22 @@ def login():#below is the data to get
 @app.route('/wall', methods=['POST', 'GET']) #shows success
 def success():
     print "wall"
-    query = "SELECT * FROM messages"
-    messages = mysql.query_db(query)
+    query = "SELECT messages.message, messages.created_at, users.first_name, users.last_name FROM messages JOIN users ON users_id=users.id"
+    messages = mysql.query_db(query) #messages is now name of dict, this query returns an array of key:val data which we will extract from
+    print messages
     return render_template('wall.html', messages = messages)
 
 @app.route('/post', methods=['POST', 'GET'])
 def post():
     message = request.form['message']
-    user = session['user']['id']
 
     if len(message) > 0: #send to db
-        query= "INSERT INTO messages (message, users_id) VALUES (:message, :user_id)"
+        print session['id']
+        query= "INSERT INTO messages (message, users_id, created_at) VALUES (:message, :user_id, NOW())"
+        #messages.user_id=users.id"
         data = {
             'message': message,#column "name" = form value name
-            'user_id': user
+            'user_id': session['id']
         }
         mysql.query_db(query, data)#defining
         flash ("You have successfully posted a message!")
@@ -128,6 +131,11 @@ def post():
         flash ("Please write a message")
         print "invalid"
         return redirect('/wall')
+
+@app.route('/logout', methods=['POST'])
+def reset():
+    session.pop('id')
+    return redirect('/')
 
 
 app.run(debug=True)

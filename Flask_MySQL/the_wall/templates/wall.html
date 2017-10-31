@@ -5,19 +5,24 @@
     <link rel="stylesheet" href="{{url_for('static', filename='stylesheet.css')}}">
   </head>
   <body>
-  <h1>This is the wall</h2>
+  <h1>This is the wall</h1>
   <form action= "/post" method = "post">
     <label for "message">Post a message: </label>
     <textarea rows="4" cols ="50" name = "message"></textarea>
     <button type = "submit">Post message</button>
   </form>
-  {% for messages in messages %}
+
+  {% for messages in messages %}<!--below is name_of_dict['name_of_key'] -->
   <div class = "all_messages_comments">
-    <h4>{{user['first_name']}} {{user['last_name']}} {{messages['created_at']}}</h4>
+    <h4>{{messages['first_name']}} {{messages['last_name']}} - {{messages['created_at']}}</h4>
     <p>{{messages['message']}}</p>
 
   </div>
   {% endfor %}
+
+  <form action="/logout" method = "post">
+    <button type= "submit">Log Out</button>
+  </form>
 
   </body>
 </html>
