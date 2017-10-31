@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>The Wall</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='stylesheet.css')}}">
+  </head>
+  <body>
+  <h1>This is the wall</h2>
+  <form action= "/post" method = "post">
+    <label for "message">Post a message: </label>
+    <textarea rows="4" cols ="50" name = "message"></textarea>
+    <button type = "submit">Post message</button>
+  </form>
+  {% for messages in messages %}
+  <div class = "all_messages_comments">
+    <h4>{{user['first_name']}} {{user['last_name']}} {{messages['created_at']}}</h4>
+    <p>{{messages['message']}}</p>
+
+  </div>
+  {% endfor %}
+
+  </body>
+</html>
