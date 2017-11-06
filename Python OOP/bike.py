@@ -37,3 +37,6 @@ bike1.display_info()
 
 bike2.ride().reverse().display_info()
 bike3.reverse().reverse().reverse().display_info()
+bike.py
+Open with Google Docs
+Displaying bike.py.
