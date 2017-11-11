@@ -1,0 +1,28 @@
+body{
+  width: 800px;
+  height: auto;
+}
+.survey{
+  color: purple;
+}
+.survey.input{
+  margin-left: 15px;
+}
+h1{
+  text-align: center;
+}
+label{
+  margin-left: 250px;
+}
+input{
+  margin-bottom: 15px;
+}
+select{
+  margin-bottom: 15px;
+}
+a{
+  margin-left: 375px;
+}
+button{
+  margin-top: 25px;
+}

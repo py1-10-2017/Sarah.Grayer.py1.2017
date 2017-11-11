@@ -18,7 +18,7 @@ def index(request):
 
 def generate(request):
     request.session['tries'] += 1
-    request.session['word'] = random_word(10)
+    request.session['word'] = random_word(5)
     return redirect('/')
 
 def reset(request):
