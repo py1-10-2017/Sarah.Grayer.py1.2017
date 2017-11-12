@@ -1,0 +1,52 @@
+body{
+  width: 1000px;
+  height: auto;
+}
+h2{
+  display: block;
+  margin: 25px;
+}
+.Locations{
+  display: block;
+  margin: 15px;
+}
+.Place{
+  display: inline-block;
+  width: 195px;
+  height: 200px;
+  outline: black solid 2px;
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+}
+h3{
+  margin top: 30px;
+  font-weight: bold;
+  color: green;
+}
+p{
+  margin: 42px 20px;
+}
+.Place input{
+  width: 77px;
+  height: 21px;
+  margin: 20px 57px;
+  background-color: yellow;
+}
+input{
+  width: 932px;
+  height: 135px;
+  margin-left: 25px;
+  display: block;
+}
+a{
+  margin-left: 25px;
+  align-items: center;
+}
+.earned{
+  color: green;
+}
+.lost{
+  color: red;
+}
