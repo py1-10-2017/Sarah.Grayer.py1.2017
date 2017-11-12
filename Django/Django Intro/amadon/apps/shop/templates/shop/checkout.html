@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+  <title>Amadon</title>
+  {% load static %}
+  <link rel = "stylesheet" href = "{% static 'shop/style.css' %}">
+</head>
+  <body>
+    <h1>Thank you for your business!</h1>
+    <h3>We have charged your card for ${{request.session.last_trans}}</h3>
+    <h3>You have ordered {{request.session.total_items}} items so far and spent ${{request.session.total_charged}} with Amadon.com!</h3>
+    <a href = '/' method = "POST">Go Back</a>
+  </body>
+</html>
