@@ -6,9 +6,6 @@ from django.shortcuts import render, HttpResponse, redirect
 def index(request):
     return render (request, "surveys/index.html")
 
-def display_result(request):
-    return render (request, 'surveys/results.html')
-
 def process_form(request):
     try:
         request.session['submissions']
@@ -20,3 +17,6 @@ def process_form(request):
     request.session['language'] = request.POST['language']
     request.session['comment'] = request.POST['comment']
     return redirect("/results")
+
+def display_result(request):
+    return render (request, 'surveys/results.html')
