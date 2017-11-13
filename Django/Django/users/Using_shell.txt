@@ -1,0 +1,35 @@
+\Django\users>python manage.py shell
+Python 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:19:30) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+
+>>> from apps.user_login.models import User
+>>> User.objects.create(first_name = "Sarah", last_name = "Grayer", email_address = "sg@gmail.com", age = 27)
+<User: User object>
+>>> User.objects.create(first_name = "Justin", last_name = "Grayer", email_address = "jg@gmail.com", age = 31)
+<User: User object>
+
+>>> User.objects.all()
+<QuerySet [<User: User object>, <User: User object>]>
+
+>>> User.objects.last()
+<User: User object>
+
+>>> User.objects.all().order_by("first_name")
+<QuerySet [<User: User object>, <User: User object>]>
+
+>>> User.objects.get(id=2)
+<User: User object>
+
+>>> user2 = User.objects.get(id=2)
+>>> user2.last_name = "Sustin"
+>>> user2.save()
+
+>>> User.objects.get(id=1).delete()
+(1, {u'user_login.User': 1})
+
+>>> User.objects.all()
+<QuerySet [<User: User object>]>
+
+
+
