@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>Semi-Restful Users</title>
+  {% load static %}
+  <link rel = "stylesheet" href = "{% static 'users/style.css' %}">
+</head>
+<body>
+  <h1>User #{{user.id}}</h1>
+    <p>Full Name: {{ user.full_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Created at: {{ user.created_at }}</p>
+    <table>
+      <thead>
+        <th>
+          <form action = "/users/{{ user.id }}/edit">
+          <button type= "submit">Edit</button>
+        </th>
+        <th>
+          </form>
+          <form action = "/users/{{ user.id }}/delete">
+          <button type= "submit">Delete</button>
+          </form>
+        </th>
+      </thead>
+    </table>
+  </body>
+</html>

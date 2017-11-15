@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <title>Semi-Restful Users</title>
+  {% load static %}
+  <link rel = "stylesheet" href = "{% static 'users/style.css' %}">
+</head>
+<body>
+  <h1>Edit Users {{user.id}}</h1>
+  <form action = "/users/{{user.id}}/update" method = "POST">
+    {% csrf_token %}
+    <input type = "text" name = "full_name" placeholder = "{{user.full_name}}">
+    <input type = "email" name = "email" placeholder = "{{user.email}}">
+    <input type = "submit">
+  </form>
+  <a href = "/users">Go Back</a>
+  </body>
+</html>

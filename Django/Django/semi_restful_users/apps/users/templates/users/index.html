@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>Semi-Restful Users</title>
+  {% load static %}
+  <link rel = "stylesheet" href = "{% static 'users/style.css' %}">
+</head>
+<body>
+  <h1>Users</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.full_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.created_at }}</td>
+          <td>
+            <button type= "submit"><a href ="/users/{{ user.id }}">Show<a/></button>
+            <button type= "submit"><a href="/users/{{ user.id }}/edit">Edit</a></button>
+            <button type= "submit"><a href = "/users/{{user.id}}/delete">Delete</a></button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href ='/users/create' method = "POST"><button>Add a new user</button></a>
+  </body>
+</html>
