@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>Courses</title>
+  {% load static %}
+  <link rel = "stylesheet" href = "{% static 'add_course/style.css' %}">
+</head>
+<body>
+  <h1>Are you sure you want to delete the following course?</h1>
+  <p>Name: {{ course.name }}</p>
+  <p>Descriptions: {{ course.desc }}</p>
+  <table>
+    <tr>
+      <td>
+        <form action = "/" method = "GET">
+          {% csrf_token %}
+          <button type = "submit">No</button>
+        </form>
+      </td>
+      <td>
+        <form action = "/add_course/{{course.id}}/delete">
+          {% csrf_token %}
+          <button type = "submit">Yes! I want to delete this</a></button>
+        </form>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
