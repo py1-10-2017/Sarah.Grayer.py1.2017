@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render, HttpResponse, redirect
 from .models import User
 
-# Create your views here.
 def index(request): #two different methods route here, so if/else statement is used
     if request.method == "POST":
         print request.POST
@@ -15,6 +13,9 @@ def index(request): #two different methods route here, so if/else statement is u
             "users": User.objects.all()
         }
         return render(request, "users/index.html", context)
+
+def create(request):
+    return render(request, "users/add.html")
 
 def display(request, user_id):
     if request.method == "POST":
@@ -28,9 +29,6 @@ def display(request, user_id):
             "user":User.objects.get(id=user_id)
         }
     return render(request, "users/display.html", context)
-
-def create(request):
-    return render(request, "users/add.html")
 
 def edit(request, user_id):
     context = {

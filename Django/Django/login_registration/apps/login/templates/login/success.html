@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login and Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/style.css'}">
+    <link rel="stylesheet" type="text/css"
+ href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  </head>
+  <body>
+    <h2>Success! Welcome, {{ user.first_name }}!</h2>
+    <h5>Successfully registered (or logged in)!</h5>
+  </body>
+</html>
