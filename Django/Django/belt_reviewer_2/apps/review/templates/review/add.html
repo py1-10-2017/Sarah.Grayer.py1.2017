@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Belt Reviewer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'review/style.css'}">
+    <link rel="stylesheet" type="text/css"
+ href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  </head>
+  <body>
+    <div class = "heading">
+      <h1>Let's add a new Book Title and a Review:</h1>
+      <p><a href="/books">Home</a> | <a href="/logout">Logout</a></p>
+    </div>
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+    <form action = "/books/create" method = "POST">
+      {% csrf_token %}
+      <label for "title">Book Title:</label>
+      <input type = "text" name = "title">
+
+      <label for "author">Author: </label>
+      <p>Choose from the list:</p>
+        <select name = "author">
+            {% for author in authors %}
+              <option value = "{{author.id}}">{{author.name}}</option>
+            {% endfor %}
+        </select>
+      <p>Or add a new author:</p>
+      <input type = "text" name = "new_author">
+
+      <label for "review">Review: </label>
+      <textarea name = "review"></textarea>
+
+      <p><label for "rating" placeholder = "rate">Rating: </label>
+      <select name = "rating" placeholder = "rate">
+        <option value = "Select" selected disabled>Please Select</option>
+        <option value = "1">1</option>
+        <option value = "2">2</option>
+        <option value = "3">3</option>
+        <option value = "4">4</option>
+        <option value = "5">5</option>
+      </select> stars</p>
+
+      <button type = "submit">Add Book and Review</button>
+
+    </form>
+    </div>
+  </body>
+</html>

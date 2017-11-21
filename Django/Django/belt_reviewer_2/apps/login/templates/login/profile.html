@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Belt Reviewer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/style.css'}">
+    <link rel="stylesheet" type="text/css"
+ href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  </head>
+  <body>
+    <div class = "heading">
+      <p><a href="/books">Home</a> | <a href="{% url 'review:add' %}">Add Book and Review</a> | <a href="/logout">Logout</a></p>
+      <hr>
+        <h2>User Alias: {{ user.alias }}</h2>
+        <h4>Name: {{ user.name }}</h4>
+        <h4>Email: {{ user.email }}</h4>
+        <h4>Total Reviews: {{ user.reviews_left.all.count }}</h4>
+        <h2>Posted Reviews on the Following Books:</h2>
+          {% for book in unique_book_reviews %}
+            <h5><a href="/books/{{book.id}}">{{book.title}}</a></h5>
+          {% endfor %}
+      </hr>
+    </div>
+  </body>
+</html>

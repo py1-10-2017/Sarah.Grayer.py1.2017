@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Belt Reviewer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'review/style.css'}">
+    <link rel="stylesheet" type="text/css"
+ href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  </head>
+  <body>
+    <div class = "heading">
+      <h1> {{ book.title }}</h1>
+      <h3>Author: {{ book.author }}</h3>
+      <p><a href="/books">Home</a> | <a href="/logout">Logout</a></p>
+    </div>
+    <div class = "reviews">
+      <h4>Reviews:</h4>
+      <hr>
+      {% for review in book.reviews.all %}
+        <p>Rating: {{review.rating}} stars</p>
+        <p><a href="/user/{{review.reviewer.id}}">{{review.reviewer.name}}</a> says: {{review.review}}</p>
+        <p>Posted on: {{review.created_at}}</p>
+      {% endfor %}
+      </hr>
+    </div>
+    <div class = "add_review">
+    <form action = "/books/{{book.id}}/create" method = "POST">
+      {% csrf_token %}
+      <label for "review">Add a Review:</label>
+      <textarea type = "text" name="review"></textarea>
+      <label for "rating">Rating: </label>
+        <select name="rating">
+          <option value = "1">1</option>
+          <option value = "2">2</option>
+          <option value = "3">3</option>
+          <option value = "4">4</option>
+          <option value = "5">5</option>
+        </select>
+      <input type="submit" value="Submit Review">
+    </div>
+  </body>
+</html>

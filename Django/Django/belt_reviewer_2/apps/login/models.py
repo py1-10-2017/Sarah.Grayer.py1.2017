@@ -1,8 +1,3 @@
-
-
-LOGIN AND REGISTRATION
-
-
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import re #REGEX
@@ -31,24 +26,21 @@ class UserManager(models.Manager):
     def validate_registration(self, post_data):
         errors = []
         #names
-        if len(post_data['first_name'])<3 or len(post_data['last_name'])<3:
+        if len(post_data['name'])<3 or len(post_data['alias'])<3:
             errors.append("Please enter Name's with at least 3 characters.")
-
-        if not re.match(NAME_REGEX, post_data['first_name']) or not re.match(NAME_REGEX, post_data['last_name']):
+        if not re.match(NAME_REGEX, post_data['name']) or not re.match(NAME_REGEX, post_data['alias']):
             errors.append("Please enter Name's with only letters")
 
         #email
         if not re.match(EMAIL_REGEX, post_data['email']):
             errors.append("Invalid email")
-
         if len(User.objects.filter(email=post_data['email'])) > 0:
             errors.append("Email already in use")
 
         #pw
         if len(post_data['password'])<8:
             errors.append("Please enter a Password with at least 8 characters.")
-
-        if post_data['confirm_password'] != post_data['password']:
+        if post_data['confirm_pw'] != post_data['password']:
             errors.append("Passwords do not match.")
 
         if not errors:
@@ -56,8 +48,8 @@ class UserManager(models.Manager):
             hashed = bcrypt.hashpw((post_data['password'].encode()), bcrypt.gensalt(5))
 
             new_user = self.create(
-                first_name = post_data['first_name'],
-                last_name = post_data ['last_name'],
+                name = post_data['name'],
+                alias = post_data ['alias'],
                 email = post_data ['email'],
                 password = hashed
             )
@@ -65,8 +57,8 @@ class UserManager(models.Manager):
         return errors
 
 class User(models.Model):
-    first_name = models.CharField(max_length = 255)
-    last_name = models.CharField(max_length = 255)
+    name = models.CharField(max_length = 255)
+    alias = models.CharField(max_length = 255)
     email = models.EmailField(unique = True)
     password = models.CharField(max_length = 255)
     objects = UserManager()
